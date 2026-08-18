@@ -164,7 +164,7 @@
   }
   .stat { background: var(--bg-soft); padding: 30px 16px; }
   .stat b {
-    display: block; font-size: 2.1rem; font-weight: 800; letter-spacing: -0.02em;
+    display: block; font-size: 1.75rem; font-weight: 800; letter-spacing: -0.02em;
     background: var(--grad);
     -webkit-background-clip: text; background-clip: text;
     -webkit-text-fill-color: transparent; color: transparent;
@@ -300,6 +300,79 @@
   .quote .who b { display: block; font-size: 0.92rem; }
   .quote .who span { font-size: 0.8rem; color: var(--text-faint); }
 
+  /* ---------- Packages ---------- */
+  .pkgs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: start; }
+  .pkg {
+    position: relative;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 32px 28px 30px;
+    display: flex; flex-direction: column; gap: 0;
+    transition: transform 0.28s ease, border-color 0.28s ease;
+  }
+  .pkg:hover { transform: translateY(-5px); border-color: var(--border-strong); }
+  .pkg-feature {
+    border-color: rgba(108, 140, 255, 0.45);
+    background: linear-gradient(180deg, rgba(108,140,255,0.09), rgba(155,108,255,0.04));
+  }
+  .pkg-tag {
+    display: inline-block; align-self: flex-start;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent-3); background: rgba(79, 209, 197, 0.12);
+    border: 1px solid rgba(79, 209, 197, 0.3);
+    border-radius: 999px; padding: 4px 11px; margin-bottom: 16px;
+  }
+  .pkg-feature .pkg-tag {
+    color: var(--accent); background: rgba(108, 140, 255, 0.14);
+    border-color: rgba(108, 140, 255, 0.4);
+  }
+  .pkg h3 { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 12px; }
+  .pkg .price { display: flex; align-items: baseline; gap: 9px; flex-wrap: wrap; }
+  .pkg .price b {
+    font-size: 2rem; font-weight: 800; letter-spacing: -0.03em;
+    background: var(--grad);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+  .pkg .price s { font-size: 1.05rem; color: var(--text-faint); }
+  .pkg .price .per { font-size: 0.9rem; color: var(--text-faint); }
+  .pkg .price-note { font-size: 0.82rem; color: var(--text-faint); margin: 4px 0 18px; }
+  .pkg > p { color: var(--text-dim); font-size: 0.94rem; margin-bottom: 18px; }
+  .pkg ul { list-style: none; margin-bottom: 26px; flex: 1; }
+  .pkg ul li {
+    font-size: 0.9rem; color: var(--text-dim);
+    padding: 6px 0 6px 24px; position: relative;
+  }
+  .pkg ul li::before {
+    content: "✓"; position: absolute; left: 0; color: var(--accent-3); font-weight: 700;
+  }
+  .pkg .btn { width: 100%; }
+  .pkg-foot { text-align: center; margin-top: 30px; color: var(--text-faint); font-size: 0.92rem; }
+  .pkg-foot a { color: var(--accent); }
+
+  /* ---------- Lead magnet ---------- */
+  .magnet {
+    display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 44px 40px;
+  }
+  .magnet h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); margin-bottom: 14px; }
+  .magnet p { color: var(--text-dim); font-size: 0.98rem; }
+  .magnet ul { list-style: none; margin-top: 18px; }
+  .magnet ul li {
+    font-size: 0.9rem; color: var(--text-faint);
+    padding: 5px 0 5px 24px; position: relative;
+  }
+  .magnet ul li::before { content: "→"; position: absolute; left: 0; color: var(--accent); }
+  .magnet form { display: flex; flex-direction: column; gap: 12px; }
+  .magnet input {
+    width: 100%; padding: 14px 16px; border-radius: 12px;
+    background: var(--bg); border: 1px solid var(--border-strong);
+    color: var(--text); font-family: var(--font); font-size: 0.95rem;
+  }
+  .magnet input::placeholder { color: var(--text-faint); }
+  .magnet input:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
+  .magnet .fine { font-size: 0.79rem; color: var(--text-faint); text-align: center; }
+
   /* ---------- FAQ ---------- */
   .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
   .faq-item {
@@ -357,6 +430,8 @@
     .services-grid, .why-grid, .quotes { grid-template-columns: repeat(2, 1fr); }
     .steps, .mentors-grid { grid-template-columns: repeat(2, 1fr); }
     .stats { grid-template-columns: repeat(2, 1fr); }
+    .pkgs { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+    .magnet { grid-template-columns: 1fr; gap: 28px; padding: 36px 28px; }
   }
   @media (max-width: 640px) {
     .nav-links {
@@ -372,7 +447,7 @@
     .nav-links a { display: block; padding: 13px; font-size: 1.05rem; }
     .nav-links .btn { margin: 8px auto 0; }
     .burger { display: flex; }
-    .services-grid, .why-grid, .quotes, .steps, .mentors-grid { grid-template-columns: 1fr; }
+    .services-grid, .why-grid, .quotes, .steps, .mentors-grid, .pkgs { grid-template-columns: 1fr; }
     section { padding: 80px 0; }
     .hero { padding: 150px 0 80px; }
   }
@@ -388,10 +463,10 @@
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#services">Services</a></li>
+      <li><a href="#packages">Pricing</a></li>
       <li><a href="#process">How we work</a></li>
       <li><a href="#mentors">Mentors</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a class="btn btn-primary" href="#contact">Book a call</a></li>
+      <li><a class="btn btn-primary" href="#contact">Free audit</a></li>
     </ul>
     <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -408,19 +483,19 @@
     <div class="orb orb-3"></div>
     <div class="hero-grid"></div>
     <div class="container">
-      <span class="badge"><span class="dot"></span> Senior AI mentors · Available for new projects</span>
-      <h1>Bring AI into your company,<br><span class="grad-text">the right way.</span></h1>
-      <p class="lead">We are a team of senior AI practitioners who mentor companies through every step of AI adoption — from strategy and workflow integration to building production-ready AI solutions and training your teams.</p>
+      <span class="badge"><span class="dot"></span> Taking on 3 companies for a free AI Readiness Audit</span>
+      <h1>Find out where AI actually<br><span class="grad-text">saves you money.</span></h1>
+      <p class="lead">We're an AI consulting practice working with companies to cut through the hype — a clear roadmap of the two or three places AI pays for itself in your business, then the hands-on work to build it and train your team to run it.</p>
       <div class="hero-cta">
-        <a class="btn btn-primary" href="#contact">Book a free consultation</a>
-        <a class="btn btn-ghost" href="#services">Explore our services</a>
+        <a class="btn btn-primary" href="#contact">Claim a free audit</a>
+        <a class="btn btn-ghost" href="#packages">See packages &amp; pricing</a>
       </div>
 
       <div class="stats reveal">
-        <div class="stat"><b data-count="50">0</b><span>Companies guided</span></div>
-        <div class="stat"><b data-count="120">0</b><span>AI workflows delivered</span></div>
-        <div class="stat"><b data-count="800">0</b><span>People trained</span></div>
-        <div class="stat"><b data-count="12">0</b><span>Industries served</span></div>
+        <div class="stat"><b>Free</b><span>Readiness audit for our first 3 clients</span></div>
+        <div class="stat"><b>1 week</b><span>From kickoff to a written roadmap</span></div>
+        <div class="stat"><b>2–4 wks</b><span>To your first working integration</span></div>
+        <div class="stat"><b>Zero</b><span>Vendor commissions or lock-in</span></div>
       </div>
     </div>
   </section>
@@ -616,38 +691,85 @@
     </div>
   </section>
 
-  <!-- ============ TESTIMONIALS ============ -->
-  <section id="testimonials">
+  <!-- ============ PACKAGES ============ -->
+  <section id="packages">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow">Testimonials</span>
-        <h2>What our clients say</h2>
+        <span class="eyebrow">Packages</span>
+        <h2>Clear scope, fixed price</h2>
+        <p>No open-ended retainers to start and no hourly billing. You know what you get and what it costs before we begin.</p>
       </div>
-      <div class="quotes">
-        <div class="quote reveal">
-          <span class="mark">“</span>
-          <p>Within a month our support team was resolving tickets 40% faster with the AI assistant Mentora built and taught us to maintain ourselves.</p>
-          <div class="who">
-            <div class="avatar" style="--a1:#6c8cff; --a2:#4fd1c5;">MK</div>
-            <div><b>Maria K.</b><span>COO, logistics company</span></div>
-          </div>
+      <div class="pkgs">
+        <div class="pkg reveal">
+          <span class="pkg-tag">Start here</span>
+          <h3>AI Readiness Audit</h3>
+          <div class="price"><s>$1,500</s> <b>Free</b></div>
+          <p class="price-note">For our first 3 clients</p>
+          <p>One week. We map your workflows and data, then hand you a written roadmap of the two or three places AI would genuinely pay off — with rough numbers attached.</p>
+          <ul>
+            <li>Workflow &amp; data review</li>
+            <li>Prioritized use cases with ROI estimates</li>
+            <li>Tooling recommendations, vendor-neutral</li>
+            <li>Yours to keep, with no obligation to continue</li>
+          </ul>
+          <a class="btn btn-primary" href="#contact">Claim a free audit</a>
         </div>
-        <div class="quote reveal">
-          <span class="mark">“</span>
-          <p>They didn't just deliver a roadmap — they sat with our engineers and shipped the first integration together. That mentorship model is rare.</p>
-          <div class="who">
-            <div class="avatar" style="--a1:#9b6cff; --a2:#ff6c8c;">SD</div>
-            <div><b>Suren D.</b><span>CTO, fintech startup</span></div>
-          </div>
+
+        <div class="pkg pkg-feature reveal">
+          <span class="pkg-tag">Most popular</span>
+          <h3>Integration Sprint</h3>
+          <div class="price"><b>from $6,000</b></div>
+          <p class="price-note">Fixed scope, fixed price</p>
+          <p>Four weeks to put one AI workflow into live use — built alongside your team, in the tools they already work in, with your people trained to run it.</p>
+          <ul>
+            <li>One workflow live in production</li>
+            <li>Built into your existing tools</li>
+            <li>Team training included</li>
+            <li>Documentation and handover</li>
+          </ul>
+          <a class="btn btn-primary" href="#contact">Discuss a sprint</a>
         </div>
-        <div class="quote reveal">
-          <span class="mark">“</span>
-          <p>The training program changed how our whole company works. Even non-technical teams now automate their own routine tasks with AI.</p>
-          <div class="who">
-            <div class="avatar" style="--a1:#ffb46c; --a2:#9b6cff;">AH</div>
-            <div><b>Anna H.</b><span>Head of Operations, retail group</span></div>
-          </div>
+
+        <div class="pkg reveal">
+          <span class="pkg-tag">Ongoing</span>
+          <h3>Fractional AI Partner</h3>
+          <div class="price"><b>from $2,500</b><span class="per">/month</span></div>
+          <p class="price-note">Minimum 3 months</p>
+          <p>Your AI team on call. We keep what's live running well, find the next opportunity, and keep you current as the tooling shifts underneath you.</p>
+          <ul>
+            <li>Ongoing build &amp; iteration</li>
+            <li>Monitoring and performance review</li>
+            <li>Team mentoring sessions</li>
+            <li>Quarterly strategy planning</li>
+          </ul>
+          <a class="btn btn-ghost" href="#contact">Talk to us</a>
         </div>
+      </div>
+      <p class="pkg-foot reveal">Workshops and training days are available separately — <a href="#contact">ask us for a quote</a>.</p>
+    </div>
+  </section>
+
+  <!-- ============ LEAD MAGNET ============ -->
+  <section id="checklist">
+    <div class="container">
+      <div class="magnet reveal">
+        <div>
+          <span class="eyebrow">Free download</span>
+          <h2>The AI Readiness Checklist</h2>
+          <p>The same 20-question diagnostic we run in our paid audits. Work through it with your team and you'll know which processes are worth automating before you spend anything.</p>
+          <ul>
+            <li>Which workflows are actually AI-ready</li>
+            <li>The data questions to answer first</li>
+            <li>Red flags that mean "not yet"</li>
+            <li>How to size the payoff before you commit</li>
+          </ul>
+        </div>
+        <form id="checklistForm" novalidate>
+          <input type="text" name="name" placeholder="Your name" autocomplete="name" required>
+          <input type="email" name="email" placeholder="Work email" autocomplete="email" required>
+          <button class="btn btn-primary" type="submit">Send me the checklist</button>
+          <span class="fine">No newsletter, no spam. We'll email it once.</span>
+        </form>
       </div>
     </div>
   </section>
@@ -699,10 +821,10 @@
     <div class="container">
       <div class="cta-box reveal">
         <span class="eyebrow">Get started</span>
-        <h2>Ready to put AI to work?</h2>
-        <p>Book a free 30-minute consultation. We'll discuss your goals and show you exactly where AI can deliver value in your company — no obligation, no jargon.</p>
-        <a class="btn btn-primary" href="mailto:hello@mentora.ai?subject=Free%20AI%20Consultation">Book your free consultation</a>
-        <div class="contact-note">Or write to us directly at <a href="mailto:hello@mentora.ai">hello@mentora.ai</a></div>
+        <h2>Claim one of the three free audits</h2>
+        <p>We're taking on three companies for a free AI Readiness Audit to build our first case studies. One week of our time, a written roadmap for you, and no obligation to hire us afterwards. Book a 20-minute call and we'll tell you straight away whether it's a fit.</p>
+        <a class="btn btn-primary" id="bookCall" href="https://cal.com/mentora-ai/20min" target="_blank" rel="noopener">Book a 20-minute call</a>
+        <div class="contact-note">Prefer email? Write to <a href="mailto:hello@mentora.ai">hello@mentora.ai</a></div>
       </div>
     </div>
   </section>
@@ -717,8 +839,8 @@
     </a>
     <ul class="foot-links">
       <li><a href="#services">Services</a></li>
-      <li><a href="#process">How we work</a></li>
-      <li><a href="#mentors">Mentors</a></li>
+      <li><a href="#packages">Pricing</a></li>
+      <li><a href="#checklist">Free checklist</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <span class="copyright">© 2026 Mentora AI. All rights reserved.</span>
@@ -752,25 +874,6 @@
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  // Animated counters
-  const counterIO = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      counterIO.unobserve(e.target);
-      const el = e.target;
-      const target = +el.dataset.count;
-      const dur = 1400;
-      const t0 = performance.now();
-      const tick = now => {
-        const p = Math.min((now - t0) / dur, 1);
-        el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))) + '+';
-        if (p < 1) requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
-    });
-  }, { threshold: 0.5 });
-  document.querySelectorAll('[data-count]').forEach(el => counterIO.observe(el));
-
   // FAQ accordion
   document.querySelectorAll('.faq-item').forEach(item => {
     const q = item.querySelector('.faq-q');
@@ -786,6 +889,25 @@
         a.style.maxHeight = a.scrollHeight + 'px';
       }
     });
+  });
+
+  // Checklist request — opens the visitor's mail client with the request pre-filled.
+  // Swap this for a Formspree/Tally endpoint once you have one and leads land in a list instead.
+  const CONTACT_EMAIL = 'hello@mentora.ai';
+  const form = document.getElementById('checklistForm');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    if (!name || !email || !email.includes('@')) {
+      (name ? form.email : form.name).focus();
+      return;
+    }
+    const body = `Hi, please send me the AI Readiness Checklist.\n\nName: ${name}\nEmail: ${email}\n`;
+    location.href = `mailto:${CONTACT_EMAIL}`
+      + `?subject=${encodeURIComponent('AI Readiness Checklist request')}`
+      + `&body=${encodeURIComponent(body)}`;
+    form.querySelector('button').textContent = 'Opening your email…';
   });
 
   // Card hover glow follows cursor
